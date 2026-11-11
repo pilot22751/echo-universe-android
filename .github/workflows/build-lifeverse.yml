@@ -1,0 +1,48 @@
+name: Compilar VIDAVERSO APK
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'lifeverse/**'
+      - '.github/workflows/build-lifeverse.yml'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v4
+      - name: Extrair projeto Android
+        run: |
+          mkdir -p lifeverse/build-src
+          tar -xJf lifeverse/source.tar.xz -C lifeverse/build-src
+      - name: Configurar Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Localizar Android SDK
+        run: |
+          SDKMANAGER=$(find /usr/local/lib/android/sdk/cmdline-tools -type f -name sdkmanager | head -n 1)
+          test -n "$SDKMANAGER"
+          echo "$(dirname "$SDKMANAGER")" >> "$GITHUB_PATH"
+          echo "ANDROID_HOME=/usr/local/lib/android/sdk" >> "$GITHUB_ENV"
+      - name: Instalar SDK Android 35
+        run: |
+          yes | sdkmanager --licenses || true
+          sdkmanager --install "platforms;android-35" "build-tools;35.0.0"
+      - name: Preparar Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.11.1'
+      - name: Compilar APK debug
+        run: gradle --no-daemon -p lifeverse/build-src --stacktrace assembleDebug
+      - name: Publicar instalador
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: VIDAVERSO-Android-APK
+          path: lifeverse/build-src/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
