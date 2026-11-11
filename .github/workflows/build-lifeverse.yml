@@ -21,6 +21,7 @@ jobs:
       - name: Testes de regressão e sintaxe
         run: |
           node lifeverse/build-src/tests/smoke.js
+          node lifeverse/build-src/tests/v3-regression.js
           for f in lifeverse/build-src/app/src/main/assets/*.js; do node --check "$f"; done
       - name: Configurar Java 17
         uses: actions/setup-java@v4
