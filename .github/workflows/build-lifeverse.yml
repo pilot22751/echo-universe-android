@@ -18,6 +18,10 @@ jobs:
         run: |
           mkdir -p lifeverse/build-src
           tar -xJf lifeverse/source.tar.xz -C lifeverse/build-src
+      - name: Testes de regressão e sintaxe
+        run: |
+          node lifeverse/build-src/tests/smoke.js
+          for f in lifeverse/build-src/app/src/main/assets/*.js; do node --check "$f"; done
       - name: Configurar Java 17
         uses: actions/setup-java@v4
         with:
