@@ -1,48 +1,84 @@
-# VIDAVERSO 4.0 — Imersão geográfica e cotidiana
+# VIDAVERSO 5.0 — Simulador de Vida para Android
 
-Jogo independente e original de simulação de vida para Android. Offline, sem compras internas ou anúncios. Não é afiliado a BitLife nem altera outro aplicativo.
+**Jogo independente, 100% offline, gratuito, sem compras reais nem anúncios obrigatórios.** Não é afiliado a BitLife e não redistribui recursos premium, arquivos, textos ou código de aplicativos de terceiros.
 
-## O que foi efetivamente implementado
+## Situação real da entrega
 
-A versão 4.0 expande o mesmo motor e os mesmos saves da 3.0, em vez de recriar o jogo. A arquitetura é Android nativo com WebView offline e JavaScript de motor, conteúdos e interface.
+Esta é uma **expansão jogável e incremental da versão 4.0**; não representa a conclusão dos 400 requisitos. O documento original da especificação está em `docs/ESPECIFICACAO_400_REQUISITOS.md`. A auditoria conservadora item a item está disponível em `docs/COBERTURA_400.csv` e na aba **Universo → Auditoria 5.0** dentro do jogo.
 
-- **68 países jogáveis** e **290 localidades** (nomes reais de cidades e alguns bairros, como Complexo do Alemão). Há ao menos 4 localidades na maioria dos países. Registros de migração, seleção de destino e encerramento de emprego/locação ao mudar.
-- **Moedas por país** (BRL, USD, EUR, GBP, JPY etc.), exibidas em todas as quantias da interface: salário, saldo, patrimônio, anúncios, custos e apostas. Conversões da unidade interna para a moeda local são registradas ao imigrar. Os valores do motor continuam armazenados numa **unidade de referência BRL** para preservar os saves; a tabela cambial é fixa e **simulada**, não traz cotações financeiras reais. Salários de novos empregos e custos de vida são influenciados por país e localidade.
-- **Mercado imobiliário geográfico:** 14 tipos de imóveis com 5 variantes por tipo em cada localidade, ou 70 ofertas por localidade; 490 ofertas geradas para o Brasil em 7 localidades. Os imóveis têm preços simulados determinísticos, área, conservação, aluguel potencial, compra com taxas e opção de financiamento com entrada, dívida e pagamentos periódicos. Os imóveis do jogador preservam localidade e histórico, com manutenção, vacância e venda com comissão e quitação do empréstimo. É possível **morar de aluguel**, com caução, cobrança anual, rescisão e dívida por atraso.
-- **23 veículos/modelos** com nomes reais (ex.: Toyota Corolla, Honda Civic, Tesla Model 3, Jeep Compass), taxas, conservação e custos. Os preços são **inventados para o jogo**, não tabelas reais, ofertas de concessionárias ou publicidade.
-- **Cassino fictício para maiores de 18 anos**: roleta europeia (37 casas), caça-níqueis e blackjack interativo com pedir carta/parar; saldo, lucro/prejuízo, histórico e limite persistente de 5 rodadas por ano. Usa somente dinheiro virtual do jogo.
-- **Vida noturna e cinema:** seis opções de lazer com custos, limites anuais, chances de resultados diferentes, registros na linha do tempo, interação com amigos/companheiros e referências nominais a filmes existentes (ex.: *Megamente*, *A Viagem de Chihiro*) sem copiar cenas, arte ou roteiro.
-- **Vida afetiva adulta:** escolha da orientação sexual, início de namoro compatível, encontros, flertes e intimidade consensual narrada de forma não explícita. Relações, confiança, personalidade e memórias afetam o resultado. O conteúdo íntimo exige personagens adultos.
-- **Realeza realista:** nascer ou casar na realeza só se o país tiver uma monarquia; o Brasil e outras repúblicas não oferecem esse caminho. Sair de uma monarquia encerra o status real. Funções reais anteriores permanecem acessíveis nos países aptos.
-- **27 ocupações locais**, incluindo mangaká e animador de anime no Japão, roteirista de Hollywood nos EUA, produtor de K-pop na Coreia do Sul, carnaval e música popular no Brasil. Empregos locais bloqueiam candidaturas fora do país. **14 formações ligadas à localidade** também exigem o país correspondente. Total integrado: **318 títulos profissionais** e **104 cursos**. Isso não significa 318 histórias profissionais exclusivas.
-- **Eventos culturais por país** ligados ao tempo e à localidade, sem replicar integralmente falas/obras de terceiros.
-- **Auditoria 4.0 no jogo** mostrando os números reais: países, cidades, ofertas, modelos, profissões locais e monarquias.
+**Resultado da matriz:** 400 itens; **27 implementados**, **260 parciais**, **113 pendentes**. A matriz não é certificação de completude; itens marcados como implementados indicam comportamentos verificáveis por testes de regressão, mas não garantem ausência de bugs em aparelhos físicos. A classificação foi conservadora e pode mudar conforme os testes.
+
+## Recursos efetivamente acrescentados na versão 5.0
+
+### Bancos e crédito
+- Três instituições fictícias com tarifas, juros e requisitos diferentes.
+- Conta corrente e poupança próprias, depósitos e saques entre carteira e banco que **não criam riqueza**.
+- Rendimentos anuais de poupança, lançados no extrato.
+- Empréstimos com taxas, parcelas, amortização, inadimplência, juros e pontuação de crédito.
+- Cartão de crédito com limite, compras fictícias, pagamento de fatura, juros quando não quitada e impacto no score.
+- Ativos e passivos novos passam a compor o patrimônio líquido; valores históricos das versões anteriores continuam em créditos de referência BRL.
+
+### Passaporte, autorizações e viagens
+- Passaporte com custos e vencimento.
+- Solicitações de autorização migratória com avaliação probabilística de recursos e reputação; a solicitação tem tarifa e pode ser recusada.
+- Viagens internacionais com custos, permissões fictícias e registro de destinos.
+- Nova rota guiada de imigração que exige cidadania ou permissão; a função antiga de mudança livre foi preservada para compatibilidade técnica e modo legado.
+- Naturalização fictícia após residência mínima. **Não representa exigências legais atuais.**
+
+### Escola, carreira e relações
+- Clubes escolares com idade mínima, custos, habilidades específicas e limite por ano.
+- Exame de ingresso com nota condicionada por atributos e bolsa de estudo de 35% ou 65%, que reduz realmente o custo da próxima graduação compatível.
+- Processos seletivos novos: busca por profissão, três estratégias de entrevista, avaliação de requisitos e contratação/rejeição com histórico, limite anual e salários regionalizados.
+- Empréstimos pessoais a NPCs: dinheiro transferido vira recebível, NPC pode atrasar ou pagar com recursos próprios; registros afetam confiança e memória.
+- Reuniões familiares com convidados e custos, recusas conforme personalidade e memórias persistentes.
+
+### Empresas, justiça e carreira digital
+- Linha adicional de produção nas empresas existentes, com compras de insumos, estoque, preço, vendas anuais, receita e histórico. A simulação é separada da receita base da empresa para não duplicar o mesmo faturamento.
+- Processos civis e criminais **inteiramente fictícios**, com abertura, defesa jurídica custosa, audiências no ano seguinte, absolvição, condenação, multas ou pena. Não há instruções operacionais de crimes.
+- Quatro canais fictícios de conteúdo (vídeo, lives, música e textos) com custos de criação, habilidades, duas publicações por canal ao ano, crescimento orgânico/viral condicionado, engajamento, desinteresse do público e patrocínios.
+- Matriz completa dos 400 requisitos visível no jogo e em CSV, separando implementado/parcial/pendente.
+
+## Compatibilidade com os saves 1.0–4.0
+
+A estrutura `S.v5` é acrescentada de forma não destrutiva após `v4Init`; saves antigos são migrados ao abrir. As funções básicas da 2.0–4.0 continuam carregadas. Os valores de banco e empréstimos V5 são rastreados separadamente e agregados na função de patrimônio líquido.
+
+**Faça sempre backup JSON dentro da versão anterior antes de instalar outra APK.** APKs debug do GitHub podem usar assinaturas diferentes, e desinstalar apaga dados locais. A migração foi testada no motor, mas não há garantia de compatibilidade de assinatura entre APKs debug.
 
 ## Testes
+
+Na raiz do projeto:
 
 ```bash
 node tests/smoke.js
 node tests/v3-regression.js
 node tests/v4-regression.js
-for f in app/src/main/assets/*.js; do node --check "$f"; done
+node tests/v5-regression.js
+for file in app/src/main/assets/*.js; do node --check "$file"; done
 ```
 
-Foram executados: legado 2.0, regressão 3.0 e 4.0; proteção contra repetir atividades, compra financiada e venda, locação anual, imigração e moeda, profissões exclusivas, cassino, cinema, romance adulto e simulações de 225 anos em vários países. Testes não substituem execução num celular real.
+A regressão V5 verifica 400 IDs únicos na auditoria, preservação de patrimônio entre transferências, juros anuais sem duplicidade, empréstimos, cartão de crédito, passaporte, autorizações, migração, bolsas, entrevistas, limites sociais, empréstimos familiares, estoques e vendas, processos judiciais, canais e seguidores, persistência e 210 anos de simulações distribuídas em cinco países. As regressões 2.0/3.0/4.0 também passaram. A interface foi testada em Chromium em dimensões de celular, incluindo nove seções novas sem erros JavaScript. **Não substitui testes de APK em celulares físicos.**
 
-## Compilação Android
+## Estrutura técnica
 
-No GitHub, acesse `Actions → Compilar VIDAVERSO APK`. Baixe o artefato `VIDAVERSO-Android-APK` e extraia `app-debug.apk`.
+- `app/src/main/assets/game.js`, `expansion.js`, `v3-*.js`, `v4-*.js` preservam os mecanismos anteriores.
+- `v5-engine.js` contém a lógica de banco, escola, documentação, entrevistas, família e estoque.
+- `v5-extras.js` contém processo judicial fictício e canais digitais.
+- `v5-ui.js` e `v5-extras-ui.js` fornecem interfaces de ações reais.
+- `v5-hooks.js` integra com salvamento, ano de vida, botões e patrimônio.
+- `v5-coverage.js` contém o resumo do CSV para acesso offline.
+- `tests/v5-regression.js` testa novas regras e compatibilidade.
+- `docs/COBERTURA_400.csv` contém a matriz auditada dos requisitos.
+
+## Como gerar o APK no GitHub
+
+Acesse **Actions → Compilar VIDAVERSO APK → Artifacts → VIDAVERSO-Android-APK**. Dentro do ZIP estará `app-debug.apk`. Para compilar localmente requer Java 17, Android SDK 35 e Gradle 8.11.1:
 
 ```bash
 gradle --no-daemon assembleDebug
 ```
 
-**Atenção:** antes de substituir o APK da 3.0, exporte um backup JSON dos seus saves. Builds de depuração podem ser assinados com chaves diferentes, exigindo desinstalação e apagando dados locais.
+## O que ainda está incompleto
 
-## Limitações honestas
+Ainda **não** estão concluídos os 400 requisitos. Entre os pontos pendentes ou parciais mais importantes: grande diversidade de carreiras especiais exclusivas; processos judiciários e códigos legais por país; centenas de cursos com universidades reais e calendários nacionais; saúde pública e dezenas de tratamentos específicos; dezenas de modalidades esportivas com campeonatos; companhias com múltiplos produtos, sociedade, contabilidade e falência avançadas; herança empresarial e cadeia de gerações complexa; política e eleições nacionais completas; GPS/bairros e imóveis com licenças reais; imigração integral com cidadania por ascendência; minijogos extras e interações profundas de pets; acessibilidade e tradução integral; balanceamento econômico entre todos os países. A simulação não deve ser usada para decisões financeiras, médicas ou legais reais.
 
-Os preços imobiliários e dos veículos são fictícios; não representam anúncios ou avaliações. As taxas de câmbio usadas na simulação não são taxas de mercado. O patrimônio é representado internamente em unidades BRL de referência e convertido apenas para exibição, preservando coerência e compatibilidade. A jogabilidade ainda não possui políticas completas para todos os países, nem carreiras exclusivas e história individual para cada um dos 318 títulos. Eventos culturais regionais são um primeiro sistema de profundidade, não uma réplica das experiências reais de cada país. O cassino é ficcional, sem dinheiro real. A interface gráfica da 4.0 ainda precisa ser validada em um Android físico, pois o navegador de captura de tela não inicializou neste ambiente.
-
-## Licença e direitos
-
-Código e conteúdo originais. Referências a nomes de filmes, marcas de automóveis e localidades são usadas nominativamente para contextualização; não são redistribuídas imagens, códigos ou outros materiais protegidos desses aplicativos e obras.
+Consulte `docs/COBERTURA_400.csv` e `docs/PLANO_DE_CONTINUIDADE.md` para detalhes. A prioridade continua sendo corrigir estados incoerentes e aprofundar sistemas interligados antes de multiplicar catálogos sem consequências.
