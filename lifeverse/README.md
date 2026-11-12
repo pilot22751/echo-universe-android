@@ -45,6 +45,10 @@ APK: `app/build/outputs/apk/debug/app-debug.apk`.
 
 No GitHub: **Actions → Compilar VIDAVERSO APK → Artifacts → VIDAVERSO-Android-APK**. A automação executa a regressão 2.0 e 3.0 antes de compilar o Android.
 
+### Diagnóstico de execução no GitHub Actions
+
+Se uma execução aparecer como **Queued** (na fila), isso não é um erro de compilação: o GitHub ainda não iniciou o job. Verifique em **Actions** se o repositório pode utilizar runners hospedados pelo GitHub e se não há bloqueios de plano, permissões ou cobrança. Uma nova execução por alteração da pasta `lifeverse/` pode ser solicitada sem modificar o código do jogo. Se o job iniciar, os testes automatizados são executados antes da compilação do APK.
+
 ## Limitações transparentes
 
 O prompt de expansão define metas, não quantidade de funcionalidades já prontas. **Não estão completos**: 1.000 eventos realmente únicos, 100 países com legislações próprias, 60 doenças, 200 conquistas, 15 sistemas de carreira especial completos, 400 cargos de progressão distinta, políticas eleitorais detalhadas, tribunal, exército, imigração, geração procedural rica por país, todos os mecanismos financeiros e a mesma profundidade exclusiva em cada uma das 291 ocupações. Os módulos criados são funcionais nas regras que exibem, mas não substituem uma simulação integral de cada profissão ou área.
