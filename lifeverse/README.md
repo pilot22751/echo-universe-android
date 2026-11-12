@@ -1,60 +1,48 @@
-# VIDAVERSO 3.0 — Simulador de vida original para Android
+# VIDAVERSO 4.0 — Imersão geográfica e cotidiana
 
-VIDAVERSO é um jogo independente, 100% offline e gratuito, com visual e conteúdo originais. Não possui compras internas nem anúncios, não é afiliado ao BitLife e não desbloqueia ou redistribui recursos de aplicativos de terceiros.
+Jogo independente e original de simulação de vida para Android. Offline, sem compras internas ou anúncios. Não é afiliado a BitLife nem altera outro aplicativo.
 
-## O que mudou nesta versão
+## O que foi efetivamente implementado
 
-A versão **3.0 expande o projeto 2.0 existente**. O motor principal continua em JavaScript, a interface é empacotada por uma aplicação Android WebView nativa, e os slots e backups do projeto anterior são lidos com migração de dados. O jogo não foi reconstruído do zero.
+A versão 4.0 expande o mesmo motor e os mesmos saves da 3.0, em vez de recriar o jogo. A arquitetura é Android nativo com WebView offline e JavaScript de motor, conteúdos e interface.
 
-- **Limites anuais persistentes:** uma mesma interação positiva com o mesmo NPC rende benefício somente uma vez por ano. Limites por ação, pessoa, emprego e projeto são mantidos no salvamento, inclusive ao fechar o aplicativo. Outras atividades exigem energia, dinheiro, idade e recursos.
-- **Personagens persistentes:** familiares, amigos e filhos têm atributos e memórias; envelhecem, mudam de profissão, podem enfrentar perdas, casar, se afastar e morrer. A vida social produz efeitos atrasados, preservados no save.
-- **Trabalho mais criterioso:** 291 títulos profissionais distintos no catálogo, com idade, salário, qualificação, experiência, habilidades, entrevistas limitadas, contratação probabilística, histórico de empresas, demissões, desempenho e promoções condicionadas a tempo e mérito. **A maior parte das ocupações compartilha o motor de carreiras setoriais:** 291 nomes não significam 291 campanhas profissionais exclusivas.
-- **Educação:** 90 cursos/especialidades catalogados, necessidade de ensino básico, qualificações específicas para profissões reguladas, desempenho acadêmico e possibilidade de reprovação.
-- **Economia e imóveis:** despesas por país, conservação, reparos e locações, vacância e inadimplência de imóveis; despesas de veículos; monitoramento do desempenho empresarial e dívidas corrigidas. Os valores econômicos são fictícios.
-- **Saúde e animais:** 32 condições de saúde com evolução, gravidade, tratamento e recuperação não garantida; saúde, vínculo e custos para animais de estimação.
-- **Eventos condicionais:** 49 eventos 3.0 originais com pré-requisitos e escolhas, incluindo consequências em anos futuros. A biblioteca combinada tem **263 eventos roteirizados**, além de 25 sagas preexistentes de 3 capítulos.
-- **Carreiras especiais interativas adicionais:** oficinas de cinema, música, esporte, ciência, criadores, gastronomia e estúdio de jogos, com progressão, custos, contratos/projetos, resultados, limitações anuais e produção ao longo dos anos. **São sete módulos jogáveis, não sete simulações de carreira completas**.
-- **123 conquistas verificáveis** no catálogo, 55 tipos de negócios, 34 propriedades e 29 países da base atual.
-- **Auditoria dentro do jogo:** apresenta números realmente carregados e indica objetivos ainda incompletos.
-
-## Onde encontrar
-
-Abra o jogo e navegue para **Universo**. Selecione as novas subáreas **Motor 3.0**, **Emprego real**, **Formações**, **Vidas dos NPCs**, **Imóveis+**, **Saúde & pets**, **Especiais** e **Auditoria**. As demais abas do VIDAVERSO 2.0 continuam acessíveis.
+- **68 países jogáveis** e **290 localidades** (nomes reais de cidades e alguns bairros, como Complexo do Alemão). Há ao menos 4 localidades na maioria dos países. Registros de migração, seleção de destino e encerramento de emprego/locação ao mudar.
+- **Moedas por país** (BRL, USD, EUR, GBP, JPY etc.), exibidas em todas as quantias da interface: salário, saldo, patrimônio, anúncios, custos e apostas. Conversões da unidade interna para a moeda local são registradas ao imigrar. Os valores do motor continuam armazenados numa **unidade de referência BRL** para preservar os saves; a tabela cambial é fixa e **simulada**, não traz cotações financeiras reais. Salários de novos empregos e custos de vida são influenciados por país e localidade.
+- **Mercado imobiliário geográfico:** 14 tipos de imóveis com 5 variantes por tipo em cada localidade, ou 70 ofertas por localidade; 490 ofertas geradas para o Brasil em 7 localidades. Os imóveis têm preços simulados determinísticos, área, conservação, aluguel potencial, compra com taxas e opção de financiamento com entrada, dívida e pagamentos periódicos. Os imóveis do jogador preservam localidade e histórico, com manutenção, vacância e venda com comissão e quitação do empréstimo. É possível **morar de aluguel**, com caução, cobrança anual, rescisão e dívida por atraso.
+- **23 veículos/modelos** com nomes reais (ex.: Toyota Corolla, Honda Civic, Tesla Model 3, Jeep Compass), taxas, conservação e custos. Os preços são **inventados para o jogo**, não tabelas reais, ofertas de concessionárias ou publicidade.
+- **Cassino fictício para maiores de 18 anos**: roleta europeia (37 casas), caça-níqueis e blackjack interativo com pedir carta/parar; saldo, lucro/prejuízo, histórico e limite persistente de 5 rodadas por ano. Usa somente dinheiro virtual do jogo.
+- **Vida noturna e cinema:** seis opções de lazer com custos, limites anuais, chances de resultados diferentes, registros na linha do tempo, interação com amigos/companheiros e referências nominais a filmes existentes (ex.: *Megamente*, *A Viagem de Chihiro*) sem copiar cenas, arte ou roteiro.
+- **Vida afetiva adulta:** escolha da orientação sexual, início de namoro compatível, encontros, flertes e intimidade consensual narrada de forma não explícita. Relações, confiança, personalidade e memórias afetam o resultado. O conteúdo íntimo exige personagens adultos.
+- **Realeza realista:** nascer ou casar na realeza só se o país tiver uma monarquia; o Brasil e outras repúblicas não oferecem esse caminho. Sair de uma monarquia encerra o status real. Funções reais anteriores permanecem acessíveis nos países aptos.
+- **27 ocupações locais**, incluindo mangaká e animador de anime no Japão, roteirista de Hollywood nos EUA, produtor de K-pop na Coreia do Sul, carnaval e música popular no Brasil. Empregos locais bloqueiam candidaturas fora do país. **14 formações ligadas à localidade** também exigem o país correspondente. Total integrado: **318 títulos profissionais** e **104 cursos**. Isso não significa 318 histórias profissionais exclusivas.
+- **Eventos culturais por país** ligados ao tempo e à localidade, sem replicar integralmente falas/obras de terceiros.
+- **Auditoria 4.0 no jogo** mostrando os números reais: países, cidades, ofertas, modelos, profissões locais e monarquias.
 
 ## Testes
-
-Na raiz do projeto Android:
 
 ```bash
 node tests/smoke.js
 node tests/v3-regression.js
+node tests/v4-regression.js
 for f in app/src/main/assets/*.js; do node --check "$f"; done
 ```
 
-`v3-regression.js` mede o conteúdo real e verifica anti-farm por personagem/ano e após reiniciar; personagens mortos; diploma específico; contratação; promoção; evolução anual de NPCs; reforma de imóvel; tratamento; consequências e backup; migração de saves; carreiras especiais (protótipos, lançamentos, royalties); mais de 200 anos simulados em múltiplas vidas. Inclui verificações de dinheiro, dívidas, patrimônio e idades válidas. **Passar nos testes não garante ausência de todos os bugs.**
+Foram executados: legado 2.0, regressão 3.0 e 4.0; proteção contra repetir atividades, compra financiada e venda, locação anual, imigração e moeda, profissões exclusivas, cassino, cinema, romance adulto e simulações de 225 anos em vários países. Testes não substituem execução num celular real.
 
 ## Compilação Android
 
-Requisitos: Java 17, Android SDK 35, Gradle 8.11.1.
+No GitHub, acesse `Actions → Compilar VIDAVERSO APK`. Baixe o artefato `VIDAVERSO-Android-APK` e extraia `app-debug.apk`.
 
 ```bash
 gradle --no-daemon assembleDebug
 ```
 
-APK: `app/build/outputs/apk/debug/app-debug.apk`.
+**Atenção:** antes de substituir o APK da 3.0, exporte um backup JSON dos seus saves. Builds de depuração podem ser assinados com chaves diferentes, exigindo desinstalação e apagando dados locais.
 
-No GitHub: **Actions → Compilar VIDAVERSO APK → Artifacts → VIDAVERSO-Android-APK**. A automação executa a regressão 2.0 e 3.0 antes de compilar o Android.
+## Limitações honestas
 
-### Diagnóstico de execução no GitHub Actions
+Os preços imobiliários e dos veículos são fictícios; não representam anúncios ou avaliações. As taxas de câmbio usadas na simulação não são taxas de mercado. O patrimônio é representado internamente em unidades BRL de referência e convertido apenas para exibição, preservando coerência e compatibilidade. A jogabilidade ainda não possui políticas completas para todos os países, nem carreiras exclusivas e história individual para cada um dos 318 títulos. Eventos culturais regionais são um primeiro sistema de profundidade, não uma réplica das experiências reais de cada país. O cassino é ficcional, sem dinheiro real. A interface gráfica da 4.0 ainda precisa ser validada em um Android físico, pois o navegador de captura de tela não inicializou neste ambiente.
 
-Se uma execução aparecer como **Queued** (na fila), isso não é um erro de compilação: o GitHub ainda não iniciou o job. Verifique em **Actions** se o repositório pode utilizar runners hospedados pelo GitHub e se não há bloqueios de plano, permissões ou cobrança. Uma nova execução por alteração da pasta `lifeverse/` pode ser solicitada sem modificar o código do jogo. Se o job iniciar, os testes automatizados são executados antes da compilação do APK.
+## Licença e direitos
 
-## Limitações transparentes
-
-O prompt de expansão define metas, não quantidade de funcionalidades já prontas. **Não estão completos**: 1.000 eventos realmente únicos, 100 países com legislações próprias, 60 doenças, 200 conquistas, 15 sistemas de carreira especial completos, 400 cargos de progressão distinta, políticas eleitorais detalhadas, tribunal, exército, imigração, geração procedural rica por país, todos os mecanismos financeiros e a mesma profundidade exclusiva em cada uma das 291 ocupações. Os módulos criados são funcionais nas regras que exibem, mas não substituem uma simulação integral de cada profissão ou área.
-
-A simulação médica, judicial, econômica e política é fictícia; não serve como fonte de aconselhamento profissional. O APK debug depende da assinatura utilizada no build. **Antes de remover uma instalação antiga para instalar um APK com assinatura diferente, exporte o backup JSON; desinstalar apaga os dados locais.** A migração 1.0/2.0 foi testada no motor, mas uma instalação no celular ainda precisa de teste real.
-
-## Próximos passos recomendados
-
-Completar carreiras especiais individualmente, melhorar o sistema de cidades e imigração, aprofundar escola, saúde e justiça, adicionar mais eventos contextuais sem repetições artificiais, aperfeiçoar balanceamento da economia e realizar testes de aparelho físico.
+Código e conteúdo originais. Referências a nomes de filmes, marcas de automóveis e localidades são usadas nominativamente para contextualização; não são redistribuídas imagens, códigos ou outros materiais protegidos desses aplicativos e obras.
